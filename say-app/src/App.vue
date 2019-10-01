@@ -5,8 +5,7 @@
     </header>
     <v-content>
       <div>
-        <MenuG/>
-        <MenuD/>
+        <Menu/>
       </div>
     </v-content>
     <footer>
@@ -17,15 +16,13 @@
 
 <script>
 import Header from './components/Header'
-import MenuG from './components/MenuG'
-import MenuD from './components/MenuD'
+import Menu from './components/Menu'
 import Footer from './components/Footer'
 export default {
   name: 'App',
   components: {
     Header,
-    MenuG,
-    MenuD,
+    Menu,
     Footer
   },
   data: () => ({
