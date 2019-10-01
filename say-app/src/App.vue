@@ -2,8 +2,8 @@
   <v-app>
     <v-app-bar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+        <span>Football Manager</span>
+        <span class="font-weight-light">Selection d'équipe</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
@@ -16,21 +16,23 @@
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <MenuG/>
+      <MenuD/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
+import MenuG from './components/MenuG'
+import MenuD from './components/MenuD'
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    MenuG,
+    MenuD
   },
   data: () => ({
     //
-  }),
-};
+  })
+}
 </script>
