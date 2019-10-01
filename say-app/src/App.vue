@@ -1,38 +1,34 @@
 <template>
-  <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Football Manager</span>
-        <span class="font-weight-light">Selection d'équipe</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-app-bar>
-
+  <v-app app>
+    <header>
+       <Header/>
+    </header>
     <v-content>
-      <MenuG/>
-      <MenuD/>
+      <div>
+        <MenuG/>
+        <MenuD/>
+      </div>
     </v-content>
+    <footer>
+      <Footer/>
+    </footer>
   </v-app>
 </template>
 
 <script>
+import Header from './components/Header'
 import MenuG from './components/MenuG'
 import MenuD from './components/MenuD'
+import Footer from './components/Footer'
 export default {
   name: 'App',
   components: {
+    Header,
     MenuG,
-    MenuD
+    MenuD,
+    Footer
   },
   data: () => ({
-    //
   })
 }
 </script>
