@@ -24,7 +24,7 @@
         </v-btn>
       </v-card-title>
 
-      <v-card-actions class="grey darken-3 justify-center">
+      <v-card-actions class="justify-center">
         {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
       </v-card-actions>
     </v-card>

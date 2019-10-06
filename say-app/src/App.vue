@@ -1,11 +1,13 @@
 <template>
   <v-app app>
     <header>
+      <div>
        <Header/>
+      </div>
     </header>
     <v-content>
       <div>
-        <Menu/>
+        <Cars name="ford" model="fiesta" year="2008"/>
       </div>
     </v-content>
     <footer>
@@ -16,13 +18,15 @@
 
 <script>
 import Header from './components/Header'
-import Menu from './components/Menu'
+import Cars from './components/Cars'
+import CarPage from './page/CarPage'
 import Footer from './components/Footer'
 export default {
   name: 'App',
   components: {
     Header,
-    Menu,
+    Cars,
+    CarPage,
     Footer
   },
   data: () => ({

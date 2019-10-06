@@ -1,0 +1,89 @@
+{
+    "cars": [
+        {
+            "id":1,
+            "name":"ford", 
+            "model":"fiesta",
+            "year":"2008"
+
+        },
+        {
+            "id":2,
+            "name":"Fiat", 
+            "model":"500",
+            "year":"2012"
+
+        },
+        {
+            "id":3,
+            "name":"Audi", 
+            "model":"A3",
+            "year":"2017"
+
+        },
+        {
+            "id":4,
+            "name":"BMW", 
+            "model":"Serie 5",
+            "year":"2014"
+
+        },
+        {
+            "id":5,
+            "name":"Toyota", 
+            "model":"RAV 4",
+            "year":"2018"
+
+        },
+        {
+            "id":6,
+            "name":"Mercedes", 
+            "model":"GLE",
+            "year":"2017"
+
+        },
+        {
+            "id":7,
+            "name":"Land Rover", 
+            "model":"Range Rover",
+            "year":"2015"
+        }
+    ],
+    "details": [
+        {
+            "id":"1",
+            "immatriculation":"GE824TR",
+            "km":"122510"
+        },
+        {
+            "id":"2",
+            "immatriculation":"DR225TY",
+            "km":"12500"
+        },
+        {
+            "id":"3",
+            "immatriculation":"TA825PM",
+            "km":"54555"
+        },
+        {
+            "id":"4",
+            "immatriculation":"BG412OK",
+            "km":"8745"
+        },
+        {
+            "id":"5",
+            "immatriculation":"DE210HG",
+            "km":"14785"
+        },
+        {
+            "id":"6",
+            "immatriculation":"PO102NB",
+            "km":"78000"
+        },
+        {
+            "id":"7",
+            "immatriculation":"PO147DS",
+            "km":"124963"
+        }
+    ]
+}
