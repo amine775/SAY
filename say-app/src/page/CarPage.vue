@@ -1,8 +1,8 @@
 <template>
     <div id="page">
         <div id="content">
-            <CarList/>
-            <CarDetails/>
+            <CarList v-on:selected='setSelected($event)'/>
+            <CarDetails :car='selectedCar'/>
         </div>
     </div>
 </template>
@@ -11,6 +11,19 @@
 import CarList from '../components/CarList.vue'
 import CarDetails from '../components/CarDetails.vue'
 export default {
-    components: {CarList, CarDetails}
+  data () {
+    return {
+      selectedCar: {}
+    }
+  },
+  components: {
+    CarList,
+    CarDetails
+  },
+  methods: {
+    setSelected (_selectedCar) {
+      this.selectedCar = _selectedCar
+    }
+  }
 }
 </script>
