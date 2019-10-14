@@ -4,9 +4,8 @@
             <li>{{car.name}}</li>
             <li>{{car.model}}</li>
             <li>{{car.year}}</li>
-            <button @click='selectcar(car)'>Voir les détails</button>
+            <button @click='selectCar(car)'>Voir les détails</button>
         </ul>
-        <button @click="addCar"> Add car </button>
         <p> Nombre de voiture : {{counter}} </p>
     </div>
 </template>
@@ -14,6 +13,7 @@
 <script>
 import Vue from 'vue'
 import VueResource from 'vue-resource'
+// import bus from '../main.js'
 Vue.use(VueResource)
 
 export default {
@@ -25,17 +25,9 @@ export default {
   http: {
     root: 'http://localhost:3000'
   },
-  props: ['name', 'model', 'year'],
   methods: {
-    addCar () {
-      this.cars.push({
-        'name': 'ford',
-        'model': 'fiesta',
-        'year': '2008'
-      })
-    },
-    selectcar (car) {
-      this.$emit('selected', car)
+    selectCar (car) {
+      this.$emit('selected', car.id)
     }
   },
   computed: {

@@ -12,16 +12,6 @@
         <strong class="subheading">Get connected with us on social networks!</strong>
 
         <div class="flex-grow-1"></div>
-
-        <v-btn
-          v-for="icon in icons"
-          :key="icon"
-          class="mx-4"
-          dark
-          icon
-        >
-          <v-icon size="24px">{{ icon }}</v-icon>
-        </v-btn>
       </v-card-title>
 
       <v-card-actions class="justify-center">
