@@ -13,9 +13,11 @@
             v-for="marque in marques" :key="marque.code">
             <v-list-item-title v-text="marque.libelle" tokCode="marque.code" ></v-list-item-title>
                 <v-list-group sub-group>
-                    <v-list-item  v-for="model in models" :key="model.libelle">
-                        <v-list-item-title v-if="marque.code===model.code" v-text="model.libelle"></v-list-item-title>
+                    <div v-for="model in models" :key="model.libelle">
+                    <v-list-item v-if="marque.code===model.code"  >
+                        <v-list-item-title v-text="model.libelle"></v-list-item-title>
                      </v-list-item>
+                     </div>
                  </v-list-group>
           </v-list-item>
         </v-list-group>
