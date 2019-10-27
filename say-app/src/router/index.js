@@ -1,33 +1,45 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import Contact from '../views/Contact.vue'
-import Select from '../views/Select.vue'
+import home from '../components/home.vue'
+import meetups from '../components/Meetup/meetups.vue'
+import createmeetup from '../components/Meetup/createmeetup.vue'
+import profile from '../components/user/profile.vue'
+import signin from '../components/user/signin.vue'
+import signup from '../components/user/signup.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'home',
-    component: Home
+    component: home
   },
   {
-    path: '/SELECT',
-    name: 'select',
-    component: Select
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: About
+    path: '/meetups',
+    name: 'meetups',
+    component: meetups
 
   },
   {
-    path: '/Contact',
-    name: 'contact',
-    component: Contact
+    path: '/createmeetup',
+    name: 'createmeetup',
+    component: createmeetup
+  },
+  {
+    path: '/signin',
+    name: 'signin',
+    component: signin
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: signup
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: profile
 
   }
 ]
