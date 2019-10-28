@@ -56,8 +56,27 @@
                         </v-flex>
                     </v-layout>
                     <v-layout row>
+                        <v-flex vs12 sm6 offset-sm3>
+                            <h4>Choose date</h4>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout row class="mb-2">
+                        <v-flex vs12 sm6 offset-sm3>
+                            <v-date-picker></v-date-picker>
+                            <p>{{date}}</p>
+                        </v-flex>
+                    </v-layout>
+
+                    <v-layout row>
+                        <v-flex vs12 sm6 offset-sm3>
+                            <v-time-picker v-model="time"></v-time-picker>
+                            <p>{{time}}</p>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout row>
                         <v-flex xs12 sm6 offset-sm3>
                             <v-btn class="primary" :disabled="!formIsValid" type="submit">create meetup</v-btn>
+
                         </v-flex>
                     </v-layout>
                 </form>
@@ -73,7 +92,9 @@
                 title: '',
                 location : '',
                 imageUrl:'',
-                description :''
+                description :'',
+                date: new Date(),
+                time : new Date()
             }
         },
         computed: {
@@ -81,7 +102,13 @@
             return this.title !== '' &&
                 this.location !== '' &&
                 this.imageUrl !== '' &&
-                this.description !== '' }
+                this.description !== ''
+        },
+            submittableDateTime() {
+                const date = new Date(this.date)
+                return date
+            }
+
         },
         methods:{
             onCreateMeetup(){
