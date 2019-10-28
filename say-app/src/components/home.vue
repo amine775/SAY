@@ -10,11 +10,12 @@
         </v-layout>
         <v-layout row wrap class="mt-2">
           <v-flex xs12>
-              <v-carousel>
+              <v-carousel style="cursor: pointer;">
                   <v-carousel-item
                           v-for="okok in itemss"
                           :src="okok.imageUrl"
                           :key="okok.id"
+                          @click="onLoadMeetup(okok.id)"
                   >
                       <div class="title">
                           {{okok.title}}
@@ -34,14 +35,18 @@
 
 <script>
     export default {
-        data () {
-            return{itemss: [
-                    {imageUrl: 'https://media.routard.com/image/10/5/new-york.1468105.c768x230.jpg', id:'gesfgje',title:'meetup in newyork'},
-                    {imageUrl: 'https://cdn.pixabay.com/photo/2016/11/18/19/01/paris-1836415__480.jpg', id:'gesfllgje',title:'meetup in paris'}
-                ]}
+        computed:{
+            itemss(){
+                return this.$store.getters.featuredMeetups
+            }
 
-        }
-    }
+        },
+        methods :{
+            onLoadMeetup(id) {
+                this.$router.push('/meetups/' + id)
+
+            }
+        }    }
 </script>
 
 <style scoped>
