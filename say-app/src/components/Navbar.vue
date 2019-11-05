@@ -17,21 +17,6 @@
       </v-toolbar-title>
       <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
       <v-spacer></v-spacer>
-      
-      <!-- dropdown menu -->
-      <v-menu>
-        <v-btn flat slot = "activator" color="grey" >
-        <v-icon left>expand_more</v-icon>
-        <span>Menu</span>
-        </v-btn>
-        <v-list>
-          <v-list-item v-for="item in menuItems" :key="item.title" :to="item.link">
-            <v-list-item-title>{{item.title}}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-
-
       <v-toolbar-items class="hidden-xs-only">
         <v-btn flat v-for="item in menuItems" :key="item.title" :to="item.link">
           <v-icon dark left>{{item.icon}}</v-icon>

@@ -62,15 +62,15 @@
                     </v-layout>
                     <v-layout row class="mb-2">
                         <v-flex vs12 sm6 offset-sm3>
-                            <v-date-picker></v-date-picker>
-                            <p>{{date}}</p>
+                            <v-date-picker  v-model="picker"></v-date-picker>
+
                         </v-flex>
                     </v-layout>
 
                     <v-layout row>
                         <v-flex vs12 sm6 offset-sm3>
-                            <v-time-picker v-model="time"></v-time-picker>
-                            <p>{{time}}</p>
+                            <v-time-picker v-model="time" format="24h"></v-time-picker>
+
                         </v-flex>
                     </v-layout>
                     <v-layout row>

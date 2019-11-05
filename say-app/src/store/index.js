@@ -9,14 +9,18 @@ export const store = new Vuex.Store({
                 imageUrl: 'https://media.routard.com/image/10/5/new-york.1468105.c768x230.jpg',
                 id:'gesfgje',
                 title:'meetup in newyork',
-                date: '12-03-2019'
+                date: new Date(),
+                location:'NYY',
+                description:'c ny'
             },
 
             {
                 imageUrl: 'https://cdn.pixabay.com/photo/2016/11/18/19/01/paris-1836415__480.jpg',
                 id:'gesfllgje',
                 title:'meetup in paris',
-                date: '18-03-2019'
+                date: new Date(),
+                location:'paris',
+                description:'c paris'
             }
         ],
         user:{
