@@ -94,7 +94,8 @@
                 imageUrl:'',
                 description :'',
                 date: new Date(),
-                time : new Date()
+                time : new Date(),
+                picker: new Date().toISOString().substr(0, 10)
             }
         },
         computed: {
