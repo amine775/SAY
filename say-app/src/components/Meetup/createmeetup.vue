@@ -31,12 +31,8 @@
                     </v-layout>
                     <v-layout row>
                         <v-flex xs12 sm6 offset-sm3>
-                            <v-text-field
-                                    name="imageUrl"
-                                    label="image URL"
-                                    id="image-url"
-                                    v-model="imageUrl"
-                                    required></v-text-field>
+                            <v-btn raised class="primary" @click="onPickFile">Upload image</v-btn>
+                            <input type="file" style="display : none" ref="fileInput" accept="image/*" @change="onFilePicked">
                         </v-flex>
                     </v-layout>
                     <v-layout row>
@@ -55,24 +51,24 @@
                                     required></v-text-field>
                         </v-flex>
                     </v-layout>
-                    
                     <v-layout row>
-                        <v-flex xs12 sm6 offset-sm3>
-                        <datetime type="datetime"
-                        v-model="date"
-                        zone="Europe/Paris"
-                        input-id="startDate">
-                            <label for="startDate" slot="before">Selectionner une date :</label>
-                            <template slot="button-cancel">
-                                Cancel
-                            </template>
-                            <template slot="button-confirm">
-                                Confirm
-                            </template>
-                        </datetime>
+                        <v-flex vs12 sm6 offset-sm3>
+                            <h4>Choose date</h4>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout row class="mb-2">
+                        <v-flex vs12 sm6 offset-sm3>
+                            <v-date-picker  v-model="picker"></v-date-picker>
+
                         </v-flex>
                     </v-layout>
 
+                    <v-layout row>
+                        <v-flex vs12 sm6 offset-sm3>
+                            <v-time-picker v-model="time" format="24h"></v-time-picker>
+
+                        </v-flex>
+                    </v-layout>
                     <v-layout row>
                         <v-flex xs12 sm6 offset-sm3>
                             <v-btn class="primary" :disabled="!formIsValid" type="submit">create meetup</v-btn>
@@ -86,11 +82,6 @@
 </template>
 
 <script>
-
-import { Datetime } from 'vue-datetime';
-import Vue from 'vue'
-
-Vue.component('datetime', Datetime)
     export default {
         data () {
             return {
@@ -98,7 +89,10 @@ Vue.component('datetime', Datetime)
                 location : '',
                 imageUrl:'',
                 description :'',
-                date: new Date().getMonth()
+                date: new Date(),
+                time : new Date(),
+                picker: new Date().toISOString().substr(0, 10),
+                image : null
             }
         },
         computed: {
@@ -109,7 +103,7 @@ Vue.component('datetime', Datetime)
                 this.description !== ''
         },
             submittableDateTime() {
-                const date = this.date
+                const date = new Date(this.date)
                 return date
             }
 
@@ -119,15 +113,35 @@ Vue.component('datetime', Datetime)
                 if (!this.formIsValid){
                     return
                 }
+                if (!this.image){
+                    return
+                }
                 const meetupData={
                     title: this.title,
                     location : this.location,
-                    imageUrl : this.imageUrl,
+                    image : this.image,
                     description: this.description,
-                    date: this.date
+                    date: new Date()
                 }
                 this.$store.dispatch('createMeetup',meetupData)
                 this.$router.push('/meetups')
+            },
+            onPickFile() {
+               this.$refs.fileInput.click()
+            },
+            onFilePicked (event) {
+                const files = event.target.files
+                let filename = files[0].name
+                if (filename.lastIndexOf('.') <= 0){
+                    return alert('please enter a valid file !')
+                }
+                const fileReader = new fileReader()
+                fileReader.addEventListener('load', () => {
+                    this.imageUrl = fileReader.result
+                })
+                fileReader.readAsDataURL(files[0])
+                this.image = files[0]
+
             }
         }
     }

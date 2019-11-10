@@ -21,7 +21,7 @@ new Vue({
     authDomain: 'projetecole-d4fbe.firebaseapp.com',
     databaseURL: 'https://projetecole-d4fbe.firebaseio.com',
     projectId: 'projetecole-d4fbe',
-    storageBucket: 'projetecole-d4fbe.appspot.com'
+    storageBucket: 'gs://projetecole-d4fbe.appspot.com'
   })
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
