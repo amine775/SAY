@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as firebase from 'firebase'
-
+import Datetime from 'vue-datetime'
+import 'vue-datetime/dist/vue-datetime.css'
+ 
+Vue.use(Datetime)
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
@@ -82,7 +85,7 @@ export const store = new Vuex.Store({
                 location : payload.location,
                 imageUrl : payload.imageUrl,
                 description: payload.description,
-                date: payload.date.toISOString(),
+                date: payload.date,
                 creatorId: getters.user.id
 
             }

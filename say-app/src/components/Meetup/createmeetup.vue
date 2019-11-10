@@ -55,24 +55,24 @@
                                     required></v-text-field>
                         </v-flex>
                     </v-layout>
+                    
                     <v-layout row>
-                        <v-flex vs12 sm6 offset-sm3>
-                            <h4>Choose date</h4>
+                        <v-flex xs12 sm6 offset-sm3>
+                        <datetime type="datetime"
+                        v-model="date"
+                        zone="Europe/Paris"
+                        input-id="startDate">
+                            <label for="startDate" slot="before">Selectionner une date :</label>
+                            <template slot="button-cancel">
+                                Cancel
+                            </template>
+                            <template slot="button-confirm">
+                                Confirm
+                            </template>
+                        </datetime>
                         </v-flex>
                     </v-layout>
-                    <v-layout row class="mb-2">
-                        <v-flex vs12 sm6 offset-sm3>
-                            <v-date-picker  v-model="picker"></v-date-picker>
 
-                        </v-flex>
-                    </v-layout>
-
-                    <v-layout row>
-                        <v-flex vs12 sm6 offset-sm3>
-                            <v-time-picker v-model="time" format="24h"></v-time-picker>
-
-                        </v-flex>
-                    </v-layout>
                     <v-layout row>
                         <v-flex xs12 sm6 offset-sm3>
                             <v-btn class="primary" :disabled="!formIsValid" type="submit">create meetup</v-btn>
@@ -86,6 +86,11 @@
 </template>
 
 <script>
+
+import { Datetime } from 'vue-datetime';
+import Vue from 'vue'
+
+Vue.component('datetime', Datetime)
     export default {
         data () {
             return {
@@ -93,9 +98,7 @@
                 location : '',
                 imageUrl:'',
                 description :'',
-                date: new Date(),
-                time : new Date(),
-                picker: new Date().toISOString().substr(0, 10)
+                date: new Date().getMonth()
             }
         },
         computed: {
@@ -106,7 +109,7 @@
                 this.description !== ''
         },
             submittableDateTime() {
-                const date = new Date(this.date)
+                const date = this.date
                 return date
             }
 
@@ -121,7 +124,7 @@
                     location : this.location,
                     imageUrl : this.imageUrl,
                     description: this.description,
-                    date: new Date()
+                    date: this.date
                 }
                 this.$store.dispatch('createMeetup',meetupData)
                 this.$router.push('/meetups')
