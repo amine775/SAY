@@ -8,7 +8,20 @@
                 <v-btn large router to="/createmeetup" class="primary">orgonize meeetup</v-btn>
             </v-flex>
         </v-layout>
-        <v-layout row wrap class="mt-2">
+        <v-layout xs12 class="text-xs-center">
+            <v-flex xs12>
+                <v-progress-circular
+                        indeterminate
+                        class="primary--text"
+                        :width="7"
+                        :size="70"
+                        v-if="loading"
+
+                ></v-progress-circular>
+
+            </v-flex>
+        </v-layout>
+        <v-layout row wrap class="mt-2" >
           <v-flex xs12>
               <v-carousel style="cursor: pointer;">
                   <v-carousel-item
@@ -38,6 +51,9 @@
         computed:{
             itemss(){
                 return this.$store.getters.featuredMeetups
+            },
+            loading() {
+                return this.$store.getters.loading
             }
 
         },
