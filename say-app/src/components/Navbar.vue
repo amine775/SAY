@@ -12,7 +12,7 @@
           {{item.title}}
         </v-btn>
         <v-btn v-if="userIsAuthenticated"
-                
+
         @click="OnLogout">
           <v-icon dark left>exit_to_app</v-icon>
           Logout
@@ -40,8 +40,8 @@ export default {
       if(this.userIsAuthenticated) {
         menuItems = [
           {icon:'supervisor_account',title:'view meetups', link:'/meetups'},
-          {icon:'room',title:'Organize meetup', link:'/createmeetup'},
-          {icon:'person',title:'Profile', link:'/profile'}
+          {icon:'room',title:'Organize meetup', link:'/createmeetup'}
+
         ]
       }
       return menuItems

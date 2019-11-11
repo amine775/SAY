@@ -2,9 +2,15 @@
     <v-dialog width ="350px" persistent v-model="editDialog">
        <template v-slot:activator="{ on }">
            <v-btn v-on="on">
-            <v-icon>edit</v-icon>
+            <v-icon>edit</v-icon>Edit
             </v-btn>
+
+           <v-btn
+                   class="red--text darken-1"
+                   flat
+                   @click="deleteMeetup"><v-icon>clear</v-icon>Delete</v-btn>
         </template>
+
         <v-card>
             <v-container>
                <v-layout row wrap>
@@ -32,17 +38,24 @@
                         </v-card-text>
                     </v-flex>
                 </v-layout>
-                <v-divider>
+
                     <v-layout row wrap>
                         <v-flex xs12>
-                           <v-card-actions>
-                               <v-btn class="blue--text darken-1" @click="editDialog = false">close</v-btn>
-                               <v-btn class="blue--text darken-1" @click="onSaveChanges">save</v-btn>
-                               <v-btn class="blue--text darken-1" @click="deleteMeetup">Delete</v-btn>
-                           </v-card-actions>
+                            <v-card-actions>
+
+                                <v-btn
+                                        class="red--text darken-1"
+                                        flat
+                                        @click="editDialog = false">close</v-btn>
+                                <v-btn
+                                        class="green--text darken-1"
+                                        flat
+                                        @click="onSaveChanges">save</v-btn>
+                            </v-card-actions>
                         </v-flex>
                     </v-layout>
-                </v-divider>
+
+
             </v-container>
         </v-card>
     </v-dialog>
