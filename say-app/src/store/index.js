@@ -10,23 +10,6 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state:{
         loadedMeetups: [
-            {
-                imageUrl: 'https://media.routard.com/image/10/5/new-york.1468105.c768x230.jpg',
-                id:'gesfgje',
-                title:'meetup in newyork',
-                date: new Date(),
-                location:'NYY',
-                description:'c ny'
-            },
-
-            {
-                imageUrl: 'https://cdn.pixabay.com/photo/2016/11/18/19/01/paris-1836415__480.jpg',
-                id:'gesfllgje',
-                title:'meetup in paris',
-                date: new Date(),
-                location:'paris',
-                description:'c paris'
-            }
         ],
         user: null,
         loading: false,
@@ -157,7 +140,7 @@ export const store = new Vuex.Store({
             commit('setLoading',true)
             firebase.database().ref('meetups').child(payload.id).remove().then(function() {
                 commit('setLoading',false)
-                commit('updateMeetup',payload)
+                commit('deleteMeetup',payload)
             }
             )},
 
