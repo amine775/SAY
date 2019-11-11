@@ -174,11 +174,18 @@ export const store = new Vuex.Store({
                 () => {
                     commit('setLoading',false)
                     commit('updateMeetup',payload)
-
                 }
             )
+        },
 
-
+        deleteMeetup ({commit}, payload){
+            commit('setLoading',true)
+            firebase.database().ref('meetups').child(payload.id).delete().then(
+                () => {
+                    commit('setLoading',false)
+                    commit('deleteMeetup',payload)
+                }
+            )
         },
         signUserUp ({commit},payload){
             commit('setLoading', true)

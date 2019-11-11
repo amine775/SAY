@@ -36,8 +36,9 @@
                     <v-layout row wrap>
                         <v-flex xs12>
                            <v-card-actions>
-                               <v-btn flat class="blue--text darken-1" @click="editDialog = false">close</v-btn>
-                               <v-btn flat class="blue--text darken-1" @click="onSaveChanges">save</v-btn>
+                               <v-btn class="blue--text darken-1" @click="editDialog = false">close</v-btn>
+                               <v-btn class="blue--text darken-1" @click="onSaveChanges">save</v-btn>
+                               <v-btn class="blue--text darken-1" @click="deleteMeetup">Delete</v-btn>
                            </v-card-actions>
                         </v-flex>
                     </v-layout>
@@ -67,9 +68,14 @@
                  id: this.meetup.id,
                  title : this.editedTitle,
                  description : this.editedDescription
-
               })
-          }
+          },
+          deleteMeetup () {
+              this.editDialog = false
+              this.$store.dispatch('deleteMeetup',{
+                 id: this.meetup.id
+              })
+          },
       }
   }
 </script>
