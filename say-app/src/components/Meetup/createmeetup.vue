@@ -29,6 +29,7 @@
                                     required></v-text-field>
                         </v-flex>
                     </v-layout>
+
                     <v-layout row>
                         <v-flex xs12 sm6 offset-sm3>
                             <v-btn raised class="primary" @click="onPickFile">Upload image</v-btn>
@@ -40,6 +41,7 @@
                             <img :src="imageUrl" alt="" height="200">
                         </v-flex>
                     </v-layout>
+                    
                     <v-layout row>
                         <v-flex xs12 sm6 offset-sm3>
                             <v-text-field
@@ -53,19 +55,18 @@
                     </v-layout>
                     <v-layout row>
                         <v-flex vs12 sm6 offset-sm3>
-                            <h4>Choose date</h4>
-                        </v-flex>
-                    </v-layout>
-                    <v-layout row class="mb-2">
-                        <v-flex vs12 sm6 offset-sm3>
-                            <v-date-picker  v-model="picker"></v-date-picker>
-
-                        </v-flex>
-                    </v-layout>
-
-                    <v-layout row>
-                        <v-flex vs12 sm6 offset-sm3>
-                            <v-time-picker v-model="time" format="24h"></v-time-picker>
+                            <datetime type="datetime"
+                                v-model="date"
+                                zone="Europe/Paris"
+                                input-id="startDate">
+                            <label for="startDate" slot="before">Selectionner une date :</label>
+                            <template slot="button-cancel">
+                                Cancel
+                            </template>
+                            <template slot="button-confirm">
+                                Confirm
+                            </template>
+                        </datetime>
 
                         </v-flex>
                     </v-layout>
@@ -89,9 +90,7 @@
                 location : '',
                 imageUrl:'',
                 description :'',
-                date: new Date(),
-                time : new Date(),
-                picker: new Date().toISOString().substr(0, 10),
+                date: new Date().getMonth(),
                 image : null
             }
         },
@@ -121,7 +120,7 @@
                     location : this.location,
                     image : this.image,
                     description: this.description,
-                    date: new Date()
+                    date: this.date
                 }
                 this.$store.dispatch('createMeetup',meetupData)
                 this.$router.push('/meetups')
@@ -133,7 +132,7 @@
                 const files = event.target.files
                 let filename = files[0].name
                 if (filename.lastIndexOf('.') <= 0){
-                    return alert('please enter a valid file !')
+                    return alert('please enter a valid file !') 
                 }
                 const fileReader = new FileReader()
                 fileReader.addEventListener('load', () => {
