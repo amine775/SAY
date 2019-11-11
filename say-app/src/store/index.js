@@ -3,7 +3,9 @@ import Vuex from 'vuex'
 import * as firebase from 'firebase'
 import Datetime from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
-
+import Datetime from 'vue-datetime'
+import 'vue-datetime/dist/vue-datetime.css'
+ 
 Vue.use(Datetime)
 Vue.use(Vuex)
 
