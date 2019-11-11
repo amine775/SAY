@@ -135,7 +135,7 @@
                 if (filename.lastIndexOf('.') <= 0){
                     return alert('please enter a valid file !')
                 }
-                const fileReader = new fileReader()
+                const fileReader = new FileReader()
                 fileReader.addEventListener('load', () => {
                     this.imageUrl = fileReader.result
                 })
