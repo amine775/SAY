@@ -2,6 +2,7 @@
   "name": "weby",
   "version": "0.1.0",
   "private": true,
+  "main": "main.js",
   "engines": {
     "node": "v12.11.1",
     "npm": "6.11.3"
