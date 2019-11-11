@@ -8,8 +8,8 @@
                 <v-btn large router to="/createmeetup" class="primary">orgonize meeetup</v-btn>
             </v-flex>
         </v-layout>
-        <v-layout xs12 class="text-xs-center">
-            <v-flex xs12>
+        <v-layout>
+            <v-flex xs12 class="text-xs-center">
                 <v-progress-circular
                         indeterminate
                         class="primary--text"

@@ -7,9 +7,11 @@ import { store } from './store'
 import DateFilter from './filters/date'
 import * as firebase from 'firebase'
 import Alertcmp from './components/Shared/Alert'
+import EditMeetupDetailsDialog from './components/Meetup/Edit/EditMeetupDetailsDialog'
 Vue.config.productionTip = false
 Vue.filter('date', DateFilter)
 Vue.component('app-alert',Alertcmp)
+Vue.component('app-edit-meetup-details-dialog',EditMeetupDetailsDialog)
 new Vue({
   router,
   vuetify,
@@ -21,7 +23,7 @@ new Vue({
     authDomain: 'projetecole-d4fbe.firebaseapp.com',
     databaseURL: 'https://projetecole-d4fbe.firebaseio.com',
     projectId: 'projetecole-d4fbe',
-    storageBucket: 'gs://projetecole-d4fbe.appspot.com'
+    storageBucket: 'projetecole-d4fbe.appspot.com'
   })
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {

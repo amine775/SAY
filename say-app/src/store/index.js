@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import * as firebase from 'firebase'
 import Datetime from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
- 
+
 Vue.use(Datetime)
 Vue.use(Vuex)
 
@@ -41,6 +41,21 @@ export const store = new Vuex.Store({
             state.loadedMeetups.push(payload)
 
         },
+        updateMeetup(state, payload) {
+            const meetup = state.loadedMeetups.find(meetup => {
+                return meetup.id === payload.id
+            })
+            if (payload.title){
+                meetup.title = payload.title
+            }
+            if (payload.description){
+                meetup.description = payload.description
+            }
+            if (payload.date){
+                meetup.date = payload.date
+            }
+        },
+
         setUser (state,payload){
             state.user = payload
         },
@@ -67,6 +82,7 @@ export const store = new Vuex.Store({
                        description : obj[key].description,
                        imageUrl : obj[key].imageUrl,
                        date : obj[key].date,
+                       location : obj[key].location,
                        creatorId: obj[key].creatorId
                    })
                }
@@ -83,35 +99,45 @@ export const store = new Vuex.Store({
             const meetup = {
                 title: payload.title,
                 location : payload.location,
+                imageUrl : payload.imageUrl,
                 description: payload.description,
                 date: payload.date,
                 creatorId: getters.user.id
 
             }
-            let imageUrl
-            let key
+
             firebase.database().ref('meetups').push(meetup).then(
                 (data) => {
-                     key = data.key
+                    const key = data.key
+                    commit('createMeetup',{
+                        ...meetup, id :key
 
-                    return key
+                    })
+
+
+                })
+
+
+        },
+        updateMeetupData ({commit},payload){
+            commit('setLoading',true)
+            const updateObj = {}
+            if (payload.title) {
+                updateObj.title = payload.title
+            }
+            if (payload.description) {
+                updateObj.description = payload.description
+            }
+            if (payload.date){
+               updateObj.date = payload.date
+            }
+            firebase.database().ref('meetups').child(payload.id).update(updateObj).then(
+                () => {
+                    commit('setLoading',false)
+                    commit('updateMeetup',payload)
 
                 }
-            ).then(key =>{
-                const filename = payload.image.name
-                const ext = filename.slice(filename.lastIndexOf('.'))
-                return firebase.storage().ref('meetups/' + key + '.' + ext).put(payload.image)
-            }).then(fileData => {
-                imageUrl = fileData.metadata.downloadURLs[0]
-                return firebase.database().ref('meetups').child(key).update({imageUrl : imageUrl})
-
-            }).then(() => {
-                commit('createMeetup',{
-                  ...meetup,
-                    imageUrl : imageUrl,
-                    id : key
-                })
-            })
+            )
 
 
         },
