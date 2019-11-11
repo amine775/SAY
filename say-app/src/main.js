@@ -8,14 +8,10 @@ import DateFilter from './filters/date'
 import * as firebase from 'firebase'
 import Alertcmp from './components/Shared/Alert'
 import EditMeetupDetailsDialog from './components/Meetup/Edit/EditMeetupDetailsDialog'
-import RegisterDialog from './components/Meetup/Registration/RegisterDialog'
-
 Vue.config.productionTip = false
 Vue.filter('date', DateFilter)
 Vue.component('app-alert',Alertcmp)
 Vue.component('app-edit-meetup-details-dialog',EditMeetupDetailsDialog)
-Vue.component('app-meetup-register-dialog',RegisterDialog)
-
 new Vue({
   router,
   vuetify,
@@ -32,7 +28,6 @@ new Vue({
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.$store.dispatch('autoSignIn',user)
-        this.$store.dispatch('fetchUserData')
       }
     })
     this.$store.dispatch('loadMeetups')
