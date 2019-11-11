@@ -68,6 +68,20 @@ export const store = new Vuex.Store({
                 meetup.date = payload.date
             }
         },
+        deleteMeetup (state,payload) {
+            const meetup = state.loadedMeetups.find(meetup => {
+                return meetup.id === payload.id
+            })
+            if (payload.title){
+                meetup.title = null
+            }
+            if (payload.description){
+                meetup.description = null
+            }
+            if (payload.date){
+                meetup.date = null
+            }
+        },
 
         setUser (state,payload){
             state.user = payload
@@ -180,13 +194,12 @@ export const store = new Vuex.Store({
 
         deleteMeetup ({commit}, payload){
             commit('setLoading',true)
-            firebase.database().ref('meetups').child(payload.id).delete().then(
-                () => {
-                    commit('setLoading',false)
-                    commit('deleteMeetup',payload)
-                }
-            )
-        },
+            firebase.database().ref('meetups').child(payload.id).remove().then(function() {
+                commit('setLoading',false)
+                commit('updateMeetup',payload)
+            }
+            )},
+
         signUserUp ({commit},payload){
             commit('setLoading', true)
             commit('clearError')

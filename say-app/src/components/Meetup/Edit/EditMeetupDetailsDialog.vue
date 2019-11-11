@@ -87,7 +87,8 @@
               this.editDialog = false
               this.$store.dispatch('deleteMeetup',{
                  id: this.meetup.id
-              })
+              }),
+              this.$router.push('/meetups')
           },
       }
   }
