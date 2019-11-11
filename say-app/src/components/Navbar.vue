@@ -1,8 +1,8 @@
 <template>
   <nav>
-    <v-toolbar dark class="purple darken-1">
+    <v-toolbar dark class="light-blue darken-4">
       <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer">DevMeetUp</router-link>
+        <router-link to="/" tag="span" style="cursor: pointer">AfterWorkParty</router-link>
       </v-toolbar-title>
       <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
       <v-spacer></v-spacer>
@@ -39,8 +39,8 @@ export default {
       ]
       if(this.userIsAuthenticated) {
         menuItems = [
-          {icon:'supervisor_account',title:'view meetups', link:'/meetups'},
-          {icon:'room',title:'Organize meetup', link:'/createmeetup'}
+          {icon:'supervisor_account',title:'view afterwork', link:'/meetups'},
+          {icon:'room',title:'Organize afterwork', link:'/createmeetup'}
 
         ]
       }
